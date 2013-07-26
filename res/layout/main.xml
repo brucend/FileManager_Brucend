@@ -1,0 +1,436 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#ffffffff" >
+
+    <RelativeLayout
+        android:id="@+id/tab"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/tabbg" >
+
+        <ImageView
+            android:id="@+id/addtag"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:src="@drawable/icon_add" />
+        <!-- "horizontal" android:scrollbars="none" -->
+
+        <HorizontalScrollView
+            android:id="@+id/tabs"
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:layout_alignParentTop="true"
+            android:layout_toLeftOf="@id/addtag"
+            android:padding="0dp"
+            android:scrollbars="none" >
+
+            <TableLayout
+                android:layout_width="fill_parent"
+                android:layout_height="40dp"
+                android:padding="0dp" >
+
+                <TableRow
+                    android:id="@+id/tabrow"
+                    android:layout_width="fill_parent"
+                    android:layout_height="40dp"
+                    android:padding="3dp" >
+                </TableRow>
+            </TableLayout>
+        </HorizontalScrollView>
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/mount"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/tab"
+        android:gravity="center"
+        android:textSize="20dp" />
+
+    <Gallery
+        android:id="@+id/pathgallery"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:layout_below="@id/tab"
+        android:layout_toLeftOf="@id/mount"
+        android:background="@drawable/pathbg" >
+    </Gallery>
+
+    <LinearLayout
+        android:id="@+id/searchlayout"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:layout_below="@id/tab"
+        android:layout_gravity="center_vertical"
+        android:background="@drawable/pathbg"
+        android:visibility="invisible" >
+
+        <ImageButton
+            android:id="@+id/searchclose"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/searchstop" >
+        </ImageButton>
+
+        <ProgressBar
+            android:id="@+id/searchbar"
+            android:layout_width="35dp"
+            android:layout_height="35dp" >
+        </ProgressBar>
+
+        <TextView
+            android:id="@+id/searchpath"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:gravity="fill"
+            android:textColor="#ffffffff" >
+        </TextView>
+    </LinearLayout>
+
+    <!-- 最下面的工具栏 optgallery @drawable/optbg -->
+
+    <LinearLayout
+        android:id="@+id/optgallery"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/optbg"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:id="@+id/opttag"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:src="@drawable/tag_show" />
+
+        <ImageView
+            android:id="@+id/optup"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:src="@drawable/up" />
+
+        <ImageView
+            android:id="@+id/opthistory"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:src="@drawable/history" />
+
+        <ImageView
+            android:id="@+id/optmultfile"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:src="@drawable/multfile" />
+
+        <ImageView
+            android:id="@+id/optrefresh"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:src="@drawable/refresh" />
+
+        <ImageView
+            android:id="@+id/optmenu"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:src="@drawable/menu" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/optgallery"
+        android:layout_below="@id/pathgallery"
+        android:background="#ffffffff" >
+
+        <org.brucend.filemanager.ui.component.DDListView
+            android:id="@+id/filelist"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@null"
+            android:cacheColorHint="#00000000"
+            android:divider="#ff3089fe"
+            android:dividerHeight="2dp"
+            android:drawSelectorOnTop="false"
+            android:listSelector="@drawable/list_selector_background"
+            android:visibility="gone" >
+        </org.brucend.filemanager.ui.component.DDListView>
+        <!--
+			android:layout_below="@id/pathgallery"
+			android:layout_above="@id/optgallery"
+        -->
+
+
+        <!--
+             <LinearLayout android:id="@+id/ddv"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content">
+			</LinearLayout>
+        -->
+
+        <org.brucend.filemanager.ui.component.DDGridView
+            android:id="@+id/filegrid"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center"
+            android:background="@null"
+            android:cacheColorHint="#00000000"
+            android:gravity="center_horizontal"
+            android:listSelector="@drawable/grid_selector_background"
+            android:numColumns="5"
+            android:verticalSpacing="5dip" >
+        </org.brucend.filemanager.ui.component.DDGridView>
+    </LinearLayout>
+
+    <!-- setting view -->
+
+    <RelativeLayout
+        android:id="@+id/settingslayout"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="#ff000000"
+        android:visibility="invisible" >
+
+        <TableLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true" >
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="2dip"
+                android:background="#ff4791ff" />
+
+            <TableRow
+                android:id="@+id/apkbackup"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+
+                <LinearLayout
+                    android:id="@+id/settingapkbackup"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:background="@drawable/pressed_background"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:text="APK备份目录"
+                        android:textColor="#ffffffff"
+                        android:textSize="25dp" >
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/apkbackuppath"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:text="/sdcard/panda"
+                        android:textColor="#ffa6b1b6"
+                        android:textSize="16dp" />
+                </LinearLayout>
+            </TableRow>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="2dip"
+                android:background="#ff4791ff" />
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+
+                <CheckBox
+                    android:id="@+id/settinghidefilebox"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:background="@drawable/pressed_background"
+                    android:text="          隐藏以 . 开关的文件"
+                    android:textColor="#ffffffff"
+                    android:textSize="25dp" />
+            </TableRow>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="2dip"
+                android:background="#ff4791ff" />
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+
+                <CheckBox
+                    android:id="@+id/settingrootbox"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:background="@drawable/pressed_background"
+                    android:text="          带root权限"
+                    android:textColor="#ffffffff"
+                    android:textSize="25dp" />
+            </TableRow>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="2dip"
+                android:background="#ff4791ff" />
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:text="SD存储卡"
+                        android:textColor="#ffffffff"
+                        android:textSize="25dp" >
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/sdtext"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textColor="#ffa6b1b6"
+                        android:textSize="16dp" />
+                </LinearLayout>
+            </TableRow>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="2dip"
+                android:background="#ff4791ff" />
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:text="手机内部存储"
+                        android:textColor="#ffffffff"
+                        android:textSize="25dp" >
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/datatext"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textColor="#ffa6b1b6"
+                        android:textSize="16dp" />
+                </LinearLayout>
+            </TableRow>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="2dip"
+                android:background="#ff4791ff" />
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:id="@+id/settingabouthelp"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:background="@drawable/pressed_background"
+                    android:padding="5dp"
+                    android:text="关于/帮助"
+                    android:textColor="#ffffffff"
+                    android:textSize="25dp" />
+            </TableRow>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="2dip"
+                android:background="#ff4791ff" />
+        </TableLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true" >
+
+            <Button
+                android:id="@+id/settingok"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="@string/ok" />
+
+            <Button
+                android:id="@+id/settingcancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="@string/cancel" />
+        </LinearLayout>
+    </RelativeLayout>
+    <!-- setting view -->
+
+    <LinearLayout
+        android:id="@+id/appmenu"
+        android:layout_width="fill_parent"
+        android:layout_height="125dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/menubackground"
+        android:gravity="bottom"
+        android:orientation="vertical"
+        android:visibility="gone" >
+
+        <LinearLayout
+            android:id="@+id/approw1"
+            android:layout_width="fill_parent"
+            android:layout_height="60dp"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:padding="2dp" >
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/approw2"
+            android:layout_width="fill_parent"
+            android:layout_height="60dp"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:padding="2dp" >
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>
